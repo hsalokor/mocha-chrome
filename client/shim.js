@@ -1,4 +1,4 @@
-(function (){
+(function () {
   'use strict';
 
   Object.defineProperty(window, 'mocha', {
@@ -17,7 +17,8 @@
         reporter: 'spec',
         useColors: true
       };
-
+      window._eventbus.emit('mocha-event', JSON.stringify(window._mochabridge));
+      mochaOptions.reporter = window._mochabridge;
       mocha.setup(mochaOptions);
     },
     configurable: true
@@ -56,6 +57,7 @@
       window._eventbus.emit('started', m.suite.suites.length);
 
       m.runner = origRun.apply(mocha, arguments);
+
       if (m.runner.stats && m.runner.stats.end) {
         window._eventbus.emit('ended', m.runner.stats);
       }
