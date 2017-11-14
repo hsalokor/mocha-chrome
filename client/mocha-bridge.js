@@ -11,14 +11,21 @@
     });
   };
 
+  // Note: field 'parent' creates circular dependency
   root._mochabridge = function (runner) {
     retransmit(runner, 'start');
 
-    // field 'parent' creates circular dependency
+    retransmit(runner, 'suite', 'title', 'body', 'async', 'sync', 'timedOut', 'pending', 'type', 'file', '_trace');
+    retransmit(runner, 'suite end', 'title', 'body', 'async', 'sync', 'timedOut', 'pending', 'type', 'file', '_trace');
+
+    retransmit(runner, 'hook', 'title', 'body', 'async', 'sync', 'timedOut', 'pending', 'type', 'file', '_slow', '_trace');
+    retransmit(runner, 'hook end', 'title', 'body', 'async', 'sync', 'timedOut', 'pending', 'type', 'file', '_trace');
+
     retransmit(runner, 'test', 'title', 'body', 'async', 'sync', 'timedOut', 'pending', 'type', 'file', '_trace');
+    retransmit(runner, 'test end', 'title', 'body', 'async', 'sync', 'timedOut', 'pending', 'type', 'file', '_trace');
+    retransmit(runner, 'pending', 'title', 'body', 'async', 'sync', 'timedOut', 'pending', 'type', 'file', '_trace');
 
     retransmit(runner, 'fail', 'title', 'fn', 'body', 'async', 'sync', 'timedOut', 'pending', 'type', 'file', 'callback', 'duration', 'state', '_trace');
-
     retransmit(runner, 'pass', 'title', 'body', 'async', 'sync', 'timedOut', 'pending', 'type', 'file', 'callback', 'duration', 'state');
 
     retransmit(runner, 'end');
