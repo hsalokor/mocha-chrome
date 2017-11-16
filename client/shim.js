@@ -17,7 +17,6 @@
         reporter: 'spec',
         useColors: true
       };
-      window._eventbus.emit('mocha-event', JSON.stringify(window._mochabridge));
       mochaOptions.reporter = window._mochabridge;
       mocha.setup(mochaOptions);
     },

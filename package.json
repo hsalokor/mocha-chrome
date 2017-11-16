@@ -31,13 +31,13 @@
     "chrome-launcher": "^0.8.1",
     "chrome-remote-interface": "^0.25.2",
     "chrome-unmirror": "^0.1.0",
-    "circular-json": "^0.4.0",
     "debug": "^3.1.0",
     "deep-assign": "^2.0.0",
     "import-local": "^0.1.1",
     "loglevel": "^1.4.1",
     "meow": "^3.7.0",
-    "nanobus": "^4.2.0"
+    "nanobus": "^4.2.0",
+    "serializr": "^1.1.14"
   },
   "devDependencies": {
     "chai": "^4.1.0",
